@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script type="text/javascript">
+         function checkUser(){
+				//获取表单参数
+				var username = document.getElementById("username");
+				var password = document.getElementById("password");
+
+				//非空校验
+				if(username.value == null || username.value == ""){
+					alert("用户名不能为空！");
+					return false;
+				}
+                if(password.value == null || password.value == ""){
+                    alert("密码不能为空！");
+                    return false;
+                }
+                return true;
+			}
+    </script>
+</head>
+<body>
+    <h2>欢迎来到登录页面</h2>
+    <p style="color: red" th:text="${session.errorMsg}"/>
+    <form action="/loginController/login" method="post">
+        <label>用户名：</label><input type="text" id="username" name="username"/>
+        <label>密码：</label><input type="text" id="password" name="password"/>
+        <button type="submit" onclick="">登录</button>
+    </form>
+</body>
+</html>
